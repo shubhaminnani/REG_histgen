@@ -1,0 +1,5 @@
+# Ignore everything in temp/ folder
+CLAM/
+results/optimus1_all/model_best.pth
+results/uni2_all/model_best.pth
+pycocoevalcap/meteor/data/paraphrase-en.gz
