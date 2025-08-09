@@ -1,20 +1,19 @@
-# Dataset, model weight, source code for paper "HistGen: Histopathology Report Generation via Local-Global Feature Encoding and Cross-modal Context Interaction"
+# "PathVLM: Pathology report generation using vision language model from gigapixel whole slide images"
 
-### ✨ **We are glad to announce that our paper is accepted by MICCAI2024!!**
+### ✨ **Our method stood second in Test Phase 1!!**
 
-This repo contains the dataset, model weight, and source code for paper "HistGen: Histopathology Report Generation via Local-Global Feature Encoding and Cross-modal Context Interaction". We only support PyTorch for now. See our paper for a detailed description of **HistGen**.
+This repo contains the dataset, model weight, and source code for REG challenge from MICCAI 2025.
 
-**HistGen: Histopathology Report Generation via Local-Global Feature Encoding and Cross-modal Context Interaction**\
-*Zhengrui Guo, Jiabo Ma, Yingxue Xu, Yihui Wang, Liansheng Wang, and Hao Chen*\
-Paper: <https://arxiv.org/abs/2403.05396>
+<!-- **PathVLM: Pathology report generation using vision language model from gigapixel whole slide images**\
+*Shubham Innani, Michael Feldman, S*\
+Paper: <https://arxiv.org/abs/2403.05396> -->
 
 <!-- Link to our paper: [[arxiv]](https://arxiv.org/abs/2403.05396) -->
 
 ### Highlight of our work
-- We introduce **HistGen**, a multiple instance learning-empowered framework for histopathology report generation together with the first benchmark dataset for evaluation. 
+- We present **PathVLM**, a multiple instance learning-empowered framework for histopathology report generation together pathology specific foundation models. 
 - Inspired by diagnostic and report-writing workflows, HistGen features two delicately designed modules, aiming to boost report generation by aligning whole slide images (WSIs) and diagnostic reports from local and global granularity. 
 - To achieve this, a local-global hierarchical encoder is developed for efficient visual feature aggregation from a region-to-slide perspective. Meanwhile, a cross-modal context module is proposed to explicitly facilitate alignment and interaction between distinct modalities, effectively bridging the gap between the extensive visual sequences of WSIs and corresponding highly summarized reports. 
-- Experimental results on WSI report generation show the proposed model outperforms state-of-the-art (SOTA) models by a large margin. Moreover, the results of fine-tuning our model on cancer subtyping and survival analysis tasks further demonstrate superior performance compared to SOTA methods, showcasing strong transfer learning capability.
 
 ### Methodology
 ![](methodology.png)
@@ -36,29 +35,29 @@ Overview of the proposed HistGen framework: (a) local-global hierarchical encode
   - [Issues](#issues)
   - [License and Usage](#license-and-usage)
 
-## News
+<!-- ## News
 - **2024-12-18**: Tokenizer for HistGen is uploaded, better decoding capability is unlocked. Check modules.tokenizers for details.
 - **2024-12-18**: Ground Truth Reports are further cleaned and uploaded. Check the HuggingFace Datasets for more details.
 - **2024-12-18**: Baselines models are uploaded.
 - **2024-11-12**: HistGen WSI-report dataset is available on HuggingFace Datasets! (Also the annotation files!)
 - **2024-08-10**: Codes for feature extraction (CLAM) is uploaded.
-- **2024-06-17**: Our paper is accepted by MICCAI2024! 🎉
+- **2024-06-17**: Our paper is accepted by MICCAI2024! 🎉 -->
 
-## TO-DO
+<!-- ## TO-DO
 - [x] Release the source code for training and testing HistGen
 - [x] Release the diagnostic report data
 - [x] Release the DINOv2 ViT-L features of WSIs
 - [x] Release model weights of pre-trained DINOv2 ViT-L feature extractor
 - [x] Release the source code for WSI patching and feature extraction
-- [ ] Update checkpoints of HistGen and merge into EasyMIL for cancer diagnosis and survival analysis tasks
-
+- [ ] Update checkpoints of HistGen and merge into EasyMIL for cancer diagnosis and survival analysis tasks -->
+<!-- 
 ## Prerequisite
 Follow this instruction to create conda environment and install necessary packages:
 ```
 git clone https://github.com/dddavid4real/HistGen.git
 cd HistGen
 conda env create -f requirements.yml
-```
+<!-- ``` -->
 ## HistGen WSI-report dataset
 ✨ Our curated dataset is now available on HuggingFace Datasets! Click [here](https://huggingface.co/datasets/david4real/HistGen) to access the dataset. In the **Files and Versions** section, you could find the extracted DINOv2 features of WSIs with name *DINOv2_Features.z01~z14* and *DINOv2_Features.zip*. Please download all of them and then run the following commands to unzip the files:
 ```
@@ -197,4 +196,4 @@ If you find our work useful in your research, please consider citing our paper a
   organization={Springer}
 }
 ```
-This repo is made available under the Apache-2.0 License. For more details, please refer to the LICENSE file.
+This repo is made available under the Apache-2.0 License. For more details, please refer to the LICENSE file. -->
