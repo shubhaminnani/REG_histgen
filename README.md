@@ -50,85 +50,65 @@ Overview of the proposed HistGen framework: (a) local-global hierarchical encode
 - [x] Release model weights of pre-trained DINOv2 ViT-L feature extractor
 - [x] Release the source code for WSI patching and feature extraction
 - [ ] Update checkpoints of HistGen and merge into EasyMIL for cancer diagnosis and survival analysis tasks -->
-<!-- 
+
 ## Prerequisite
 Follow this instruction to create conda environment and install necessary packages:
 ```
-git clone https://github.com/dddavid4real/HistGen.git
+git clone https://github.com/shubhaminnani/REG_histgen
 cd HistGen
-conda env create -f requirements.yml
-``` -->
+conda env create -f enviroment.yml
+```
 
-## Preprocessing and Feature Extraction with Pre-trained DINOv2 ViT-L
+## Preprocessing and Feature Extraction with Hoptimus1 and UNI2
+
+We have added a sample slide at CLAM/test2_slides to create patches and features from all the slides.
+
+To extract features for all the slides below is the directory structure expected from the script
+CLAM/
+|-- test2_slides
+|    |-- slide_1.svs
+|    |-- slide_2.svs
+|    ╵-- ...
+|-- test2_patches
+|        |-- slide_1.h5
+|        |-- slide_2.h5
+|        ╵-- ...
+╵-- test2_features/pt_files
+|        |-- slide_1.h5
+|        |-- slide_2.h5
+|        ╵-- ...
+
 
 ### WSI Preprocessing
-In this work, we adpoted and further accelerated [CLAM](https://github.com/mahmoodlab/CLAM) for preprocessing and feature extraction. We uploaded the minimal viable version of CLAM to this repo. For installation guide, we recommend to follow the original instructions [here](https://github.com/mahmoodlab/CLAM/blob/master/docs/INSTALLATION.md). To conduct preprocessing, please run the following commands:
+In this work, we adpoted [CLAM](https://github.com/mahmoodlab/CLAM) for preprocessing and feature extraction. We uploaded the minimal viable version of CLAM to this repo. For installation guide, we recommend to follow the original instructions [here](https://github.com/mahmoodlab/CLAM/blob/master/docs/INSTALLATION.md). To conduct preprocessing, please run the following commands:
 ```
 cd HistGen
 cd CLAM
-conda activate clam
-sh patching_scripts/tcga-wsi-report.sh
+conda activate clam_latest
+sh CLAM/scripts/patches_20x.sh
 ```
+
+### Request Access
+Request access to [Hoptimus1](https://huggingface.co/bioptimus/H-optimus-1) and [UNI2-h](https://huggingface.co/MahmoodLab/UNI2-h) to extract features from their respective repository
 
 ### Feature Extraction
 To extract features of WSIs, please run the following commands:
 ```
 cd HistGen
 cd CLAM
-conda activate clam
-sh extract_scripts/tcga-wsi-report.sh
+conda activate clam_latest
+sh CLAM/scripts/features_20x.sh
 ```
-in which we provide the ImageNet-pretrained ResNet, [Ctranspath](https://github.com/Xiyue-Wang/TransPath), [PLIP](https://github.com/PathologyFoundation/plip), and our pre-trained DINOv2 ViT-L feature extractor. Note that Ctranspath requires specific timm environment, see [here](https://github.com/Xiyue-Wang/TransPath) for more info.
-
-🌟If Git LFS fails, please download the model checkpoint of our pre-trained DINOv2 feature extractor from this [link](https://huggingface.co/datasets/david4real/HistGen). You could find the checkpoint for our pretrained DINOv2 feature extractor with name *dinov2_cpath_v1.pth*. After downloading, put it under HistGen/CLAM/models/ckpts/ .
-
-🌟 Note that if loading DINOv2 checkpoint runs into problems, the most possible case is that your checkpoint is broken, please redownload from the above link. 
 
 ## HistGen WSI Report Generation Model
-### Training
-To try our model for training, validation, and testing, simply run the following commands:
-```
-cd HistGen
-conda activate histgen
-sh train_wsi_report.sh
-```
-Before you run the script, please set the path and other hyperparameters in `train_wsi_report.sh`. Note that **--image_dir** should be the path to the **dinov2_vitl** directory, and **--ann_path** should be the path to the **annotation712_update.json** file.
-
-🌟 **Update:** we have included baseline models in our paper for training, including R2Gen, R2GenCMN, Show&Tell, Transformer, M2Transformer, and UpDownAtt modeles. Note that they are not originally designed to process WSIs, thus enormous number of patches in a WSI may lead to unaffordable computational overhead. Thus, we implement a simple image token selection mechanism before processing these patch tokens by these models, "uniform sampling", "cross attention", and "kmeans clustering" are provided. And selected token number can be chosen in the script "train_wsi_report_baselines.sh". To train one of these baseline models, please run the following commands:
-```
-cd HistGen
-conda activate histgen
-sh train_wsi_report_baselines.sh
-```
-
 ### Inference
-To generate reports for WSIs in test set, you can run the following commands:
+To test the model, simply run the following commands:
 ```
 cd HistGen
 conda activate histgen
-sh test_wsi_report.sh
+./test_wsi_report.sh optimus1
+./test_wsi_report.sh uni2
 ```
-Similarly, remember to set the path and other hyperparameters in `test_wsi_report.sh`.
 
-### Transfer to Downstream Tasks
-In this paper, we consider WSI report generation task as an approach of vision-language pre-training, and we further fine-tune the pre-trained model on cancer subtyping and survival analysis tasks, with the strategy shown in [Methodology](#methodology) subfigure (d). For the implementation of downstream tasks, we recommend to use the [EasyMIL](https://github.com/birkhoffkiki/EasyMIL) repository, which is a flexible and easy-to-use toolbox for multiple instance learning (MIL) tasks developed by our team.
+Before you run the script, please set the path and other hyperparameters in `test_wsi_report.sh`. 
 
-We are currently organizing the pre-trained checkpoints and merging HistGen into EasyMIL. Please stay tuned for the update.
-
-## Issues
-- Please open new threads or report issues directly (for urgent blockers) to `zguobc@connect.ust.hk`
-- Immediate response to minor issues may not be available.
-
-## License and Usage
-If you find our work useful in your research, please consider citing our paper at:
-```
-@inproceedings{guo2024histgen,
-  title={Histgen: Histopathology report generation via local-global feature encoding and cross-modal context interaction},
-  author={Guo, Zhengrui and Ma, Jiabo and Xu, Yingxue and Wang, Yihui and Wang, Liansheng and Chen, Hao},
-  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-  pages={189--199},
-  year={2024},
-  organization={Springer}
-}
-```
-This repo is made available under the Apache-2.0 License. For more details, please refer to the LICENSE file.
