@@ -60,6 +60,8 @@ sh CLAM/scripts/features_20x.sh
 ### Inference
 Download the trained model [HistVLM](https://indiana-my.sharepoint.com/:u:/g/personal/sinnani_iu_edu/EYk3bxQvhd1HjR8_pmQpIDEBmxjCsDsDt8aWHerEahE1yQ?e=XhhPed) and place this .pt file inside as results/optimus1_all/model_best.pth
 
+Download the [paraphrase](https://github.com/tylin/coco-caption/tree/master/pycocoevalcap/meteor/data/paraphrase-en.gz) and place it inside pycocoevalcap/meteor/data/paraphrase-en.gz
+
 To test the model, simply run the following commands:
 ```
 cd HistGen
