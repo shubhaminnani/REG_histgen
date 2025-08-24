@@ -17,6 +17,8 @@ conda env create -f enviroment.yml
 We have added a sample slide at CLAM/test2_slides to create patches and features from all the slides.
 
 To extract features for all the slides below is the directory structure expected from the script
+
+```
 CLAM/
 |-- test2_slides
 |    |-- slide_1.svs
@@ -30,7 +32,7 @@ CLAM/
 |        |-- slide_1.h5
 |        |-- slide_2.h5
 |        ╵-- ...
-
+```
 
 ### WSI Preprocessing
 In this work, we adpoted [CLAM](https://github.com/mahmoodlab/CLAM) for preprocessing and feature extraction. We uploaded the minimal viable version of CLAM to this repo. For installation guide, we recommend to follow the original instructions [here](https://github.com/mahmoodlab/CLAM/blob/master/docs/INSTALLATION.md). To conduct preprocessing, please run the following commands:
