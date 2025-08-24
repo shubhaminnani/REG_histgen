@@ -106,7 +106,7 @@ def main():
 
     test_dataloader = R2DataLoader(args, tokenizer, split='test', shuffle=False)
     model = HistGenModel(args, tokenizer)
-
+    
     # get function handles of loss and metrics
     criterion = compute_loss
     metrics = compute_scores

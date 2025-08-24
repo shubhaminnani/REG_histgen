@@ -9,16 +9,16 @@ This repo contains the dataset, model weight, and source code for REG challenge 
 Paper: <https://arxiv.org/abs/2403.05396> -->
 
 <!-- Link to our paper: [[arxiv]](https://arxiv.org/abs/2403.05396) -->
-
+<!-- 
 ### Highlight of our work
 - We present **HistVLM**, a multiple instance learning-empowered framework for histopathology report generation together pathology specific foundation models. 
 - Inspired by diagnostic and report-writing workflows, HistGen features two delicately designed modules, aiming to boost report generation by aligning whole slide images (WSIs) and diagnostic reports from local and global granularity. 
-- To achieve this, a local-global hierarchical encoder is developed for efficient visual feature aggregation from a region-to-slide perspective. Meanwhile, a cross-modal context module is proposed to explicitly facilitate alignment and interaction between distinct modalities, effectively bridging the gap between the extensive visual sequences of WSIs and corresponding highly summarized reports. 
-
+- To achieve this, a local-global hierarchical encoder is developed for efficient visual feature aggregation from a region-to-slide perspective. Meanwhile, a cross-modal context module is proposed to explicitly facilitate alignment and interaction between distinct modalities, effectively bridging the gap between the extensive visual sequences of WSIs and corresponding highly summarized reports.  -->
+<!-- 
 ### Methodology
 ![](methodology.png)
-Overview of the proposed HistGen framework: (a) local-global hierarchical encoder module, (b) cross-modal context module, (c) decoder module, (d) transfer learning strategy for cancer diagnosis and prognosis.
-
+Overview of the proposed HistGen framework: (a) local-global hierarchical encoder module, (b) cross-modal context module, (c) decoder module, (d) transfer learning strategy for cancer diagnosis and prognosis. -->
+<!-- 
 ## Table of Contents
 - [Dataset, model weight, source code for paper "HistGen: Histopathology Report Generation via Local-Global Feature Encoding and Cross-modal Context Interaction"](#dataset-model-weight-source-code-for-paper-histgen-histopathology-report-generation-via-local-global-feature-encoding-and-cross-modal-context-interaction)
     - [Highlight of our work](#highlight-of-our-work)
@@ -33,7 +33,7 @@ Overview of the proposed HistGen framework: (a) local-global hierarchical encode
     - [Inference](#inference)
     - [Transfer to Downstream Tasks](#transfer-to-downstream-tasks)
   - [Issues](#issues)
-  - [License and Usage](#license-and-usage)
+  - [License and Usage](#license-and-usage) -->
 
 <!-- ## News
 - **2024-12-18**: Tokenizer for HistGen is uploaded, better decoding capability is unlocked. Check modules.tokenizers for details.
@@ -57,72 +57,7 @@ Follow this instruction to create conda environment and install necessary packag
 git clone https://github.com/dddavid4real/HistGen.git
 cd HistGen
 conda env create -f requirements.yml
-<!-- ``` -->
-## HistGen WSI-report dataset
-✨ Our curated dataset is now available on HuggingFace Datasets! Click [here](https://huggingface.co/datasets/david4real/HistGen) to access the dataset. In the **Files and Versions** section, you could find the extracted DINOv2 features of WSIs with name *DINOv2_Features.z01~z14* and *DINOv2_Features.zip*. Please download all of them and then run the following commands to unzip the files:
-```
-zip -FF DINOv2_Features.zip --out WSI_Feature_DINOv2.zip
-unzip WSI_Feature_DINOv2.zip
-``` 
-~~Also, the paired diagnostic reports can be found from the above link with name *annotations.json*.~~\
-🌟 **Update**: The ground truth reports are further cleaned and uploaded. You could find the cleaned reports with name *annotations712_update.json*, which provides smoother and more precise descripted reports. Meanwhile, the train:val:test sets are split into 7:1:2.
-<!-- Our curated dataset could be downloaded from [here](https://hkustconnect-my.sharepoint.com/:f:/g/personal/zguobc_connect_ust_hk/EhmtBBT0n2lKtiCQt97eqcEBvO9WwNM3TL9x-7-kg_liuA). -->
-
-The structure of this fold is shown as follows:
-```
-HistGen WSI-report dataset/
-|-- WSIs
-|    |-- slide_1.svs
-|    |-- slide_2.svs
-|    ╵-- ...
-|-- dinov2_vitl
-|        |-- slide_1.pt
-|        |-- slide_2.pt
-|        ╵-- ...
-╵-- annotation.json
-```
-in which **WSIs** denotes the original WSI data from TCGA, **dinov2_vitl** is the features of original WSIs extracted by our pre-trained DINOv2 ViT-L backbone, and **annotation.json** contains the diagnostic reports and case ids of their corresponding WSIs. Concretely, the structure of this file is like this:
-```
-{
-    "train": [
-        {
-            "id": "TCGA-A7-A6VW-01Z-00-DX1.1BC4790C-DB45-4A3D-9C97-92C92C03FF60",
-            "report": "Final Surgical Pathology Report Procedure: Diagnosis A. Sentinel lymph node, left axilla ...",
-            "image_path": [
-                "/storage/Pathology/wsi-report/wsi/TCGA-A7-A6VW-01Z-00-DX1.1BC4790C-DB45-4A3D-9C97-92C92C03FF60.pt"
-            ],
-            "split": "train"
-        },
-        ...
-    ],
-
-    "val": [
-        {
-            "id": "...",
-            "report": "...",
-            "image_path": ["..."],
-            "split": "val"
-        },
-        ...
-    ],
-
-    "test": [
-        {
-            "id": "...",
-            "report": "...",
-            "image_path": ["..."],
-            "split": "test"
-        },
-        ...
-    ]
-}
-```
-~~in which we have already split into train/val/test subsets with ratio 8:1:1.~~\
-"id" denotes the case id of this report's corresponding WSI, "report" is the full refined text obtained after our proposed report cleaning pipeline, and "image_path" could be just ignored. 
-
-To reproduce our proposed HistGen model, please download the **dinov2_vitl** directory together with **annotation712_update.json**.
-
-<!-- Note that before you use this json file for training, please run the `replace_pt_path.py` we provided to change the "image_path". Usage of `replace_pt_path.py` is written inside the python file. -->
+``` -->
 
 ## Preprocessing and Feature Extraction with Pre-trained DINOv2 ViT-L
 
@@ -196,4 +131,4 @@ If you find our work useful in your research, please consider citing our paper a
   organization={Springer}
 }
 ```
-This repo is made available under the Apache-2.0 License. For more details, please refer to the LICENSE file. -->
+This repo is made available under the Apache-2.0 License. For more details, please refer to the LICENSE file.
