@@ -1,4 +1,4 @@
-# "PathVLM: Pathology report generation using vision language model from gigapixel whole slide images"
+# "HistVLM: Pathology report generation using vision language model from gigapixel whole slide images"
 
 ### ✨ **Our method stood second in Test Phase 1!!**
 
@@ -11,7 +11,7 @@ Paper: <https://arxiv.org/abs/2403.05396> -->
 <!-- Link to our paper: [[arxiv]](https://arxiv.org/abs/2403.05396) -->
 
 ### Highlight of our work
-- We present **PathVLM**, a multiple instance learning-empowered framework for histopathology report generation together pathology specific foundation models. 
+- We present **HistVLM**, a multiple instance learning-empowered framework for histopathology report generation together pathology specific foundation models. 
 - Inspired by diagnostic and report-writing workflows, HistGen features two delicately designed modules, aiming to boost report generation by aligning whole slide images (WSIs) and diagnostic reports from local and global granularity. 
 - To achieve this, a local-global hierarchical encoder is developed for efficient visual feature aggregation from a region-to-slide perspective. Meanwhile, a cross-modal context module is proposed to explicitly facilitate alignment and interaction between distinct modalities, effectively bridging the gap between the extensive visual sequences of WSIs and corresponding highly summarized reports. 
 
