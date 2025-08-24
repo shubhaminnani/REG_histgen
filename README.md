@@ -70,3 +70,8 @@ conda activate histgen
 ```
 
 Before you run the script, please set the path and other hyperparameters in `test_wsi_report.sh`. 
+
+
+## Acknowledgment
+ 
+ We have adapted our code from [HistGen](https://github.com/dddavid4real/HistGen). 
