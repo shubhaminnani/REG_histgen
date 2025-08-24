@@ -1,6 +1,6 @@
 # "HistVLM: Pathology report generation using vision language model from gigapixel whole slide images"
 
-### ✨ **Our method stood second in Test Phase 1!!**
+<!-- ### ✨ **Our method stood second in Test Phase 1!!** -->
 
 This repo contains the dataset, model weight, and source code for REG challenge from MICCAI 2025.
 
@@ -59,7 +59,7 @@ cd HistGen
 conda env create -f enviroment.yml
 ```
 
-## Preprocessing and Feature Extraction with Hoptimus1 and UNI2
+## Preprocessing and Feature Extraction with Hoptimus1
 
 We have added a sample slide at CLAM/test2_slides to create patches and features from all the slides.
 
@@ -89,7 +89,7 @@ sh CLAM/scripts/patches_20x.sh
 ```
 
 ### Request Access
-Request access to [Hoptimus1](https://huggingface.co/bioptimus/H-optimus-1) and [UNI2-h](https://huggingface.co/MahmoodLab/UNI2-h) to extract features from their respective repository
+Request access to [Hoptimus1](https://huggingface.co/bioptimus/H-optimus-1) to extract features from their respective repository
 
 ### Feature Extraction
 To extract features of WSIs, please run the following commands:
@@ -101,14 +101,15 @@ sh CLAM/scripts/features_20x.sh
 ```
 
 ## HistGen WSI Report Generation Model
+
 ### Inference
+Download the trained model [HistVLM](https://huggingface.co/bioptimus/H-optimus-1) and place this .pt file inside  results/optimus1_all/model_best.pth
+
 To test the model, simply run the following commands:
 ```
 cd HistGen
 conda activate histgen
 ./test_wsi_report.sh optimus1
-./test_wsi_report.sh uni2
 ```
 
 Before you run the script, please set the path and other hyperparameters in `test_wsi_report.sh`. 
-
