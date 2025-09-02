@@ -29,8 +29,8 @@ CLAM/
 |        |-- slide_2.h5
 |        ╵-- ...
 ╵-- test2_features/pt_files
-|        |-- slide_1.h5
-|        |-- slide_2.h5
+|        |-- slide_1.pt
+|        |-- slide_2.pt
 |        ╵-- ...
 ```
 
